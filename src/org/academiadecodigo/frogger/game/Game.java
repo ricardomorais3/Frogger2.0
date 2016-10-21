@@ -3,10 +3,7 @@ package org.academiadecodigo.frogger.game;
 import org.academiadecodigo.frogger.display.Direction;
 import org.academiadecodigo.frogger.display.Field;
 import org.academiadecodigo.frogger.display.FieldPosition;
-import org.academiadecodigo.frogger.gameobjects.Collidable;
-import org.academiadecodigo.frogger.gameobjects.Moveable;
-import org.academiadecodigo.frogger.gameobjects.MoveableGameObject;
-import org.academiadecodigo.frogger.gameobjects.Rat;
+import org.academiadecodigo.frogger.gameobjects.*;
 
 /**
  * Created by codecadet on 21/10/16.
@@ -26,7 +23,8 @@ public class Game {
     public void init() {
 
         player = new Player(field);
-        moveables = new Moveable[0];
+        //moveables = new Moveable[0];
+        moveables = GameObjectFactory.getGameObject(field);
         collidables = new Collidable[0];
     }
 
