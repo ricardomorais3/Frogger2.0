@@ -1,0 +1,29 @@
+16 cols * 15 rows
+
+absolute dimensions = 512 * 480 px
+cellSize = 32 px
+drawingBoard = 16 px
+
+velocidade do thread deve ser a unidade de tempo mínima.
+Assim, em vez de a cada pausa de thread dar-se dois métodos de movimento,
+fazendo com que a imagem salte de repente duas casas e disturbe o game play,
+assim, os objectos mais rápidos mexem-se a cada thread pause, e os mais lentos
+mexem-se a cada 2 thread pauses. O player mexe-se livremente.
+Este é o princípio dos jogos Game & Watch, pois não conseguem ter processamento
+veloz, mas mantém a sua gameplay
+
+Objectivos:
+interface gráfica para todos testarmos os nossos papeis.
+cada um desenvolve uma personagem (rato, player) sem definir a interação que têm com outros, so o comportamento básico.
+no final fazemos as interacções com player.
+
+Como definir speeds diferentes:
+
+	A cada thread.sleep, é acrescentado 1 a um contador. Os objectos que
+	são mais lentos só se movem quando o contador é par. Isto garante
+	que todos os objectos mais velozes movem em cada thread.sleep,
+	e os mais lentos apenas se movem de 2 em 2, ou em múltiplos de 3,
+	etc…
+	Se necessário, reiniciar o contador para não ultrapassar limites
+	do integer. Caso isto aconteça, o contador deve ser reiniciado num
+	valor que seja múltiplo comum a todos os objectos e as suas velocidades.
