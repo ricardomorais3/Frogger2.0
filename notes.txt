@@ -18,6 +18,8 @@ por catarina a passar na segunda zona segura com um balão de fala a dizer summa
 apanhar garrafas de vinho para pontos na primeira estrada com ratos.
 objectivo e ir aos macs e trazer o summarizer de volta para a zona inicial.
 
+ecran de game over com pontuação e um restart.
+
 Como definir speeds diferentes:
 
 	A cada thread.sleep, é acrescentado 1 a um contador. Os objectos que
