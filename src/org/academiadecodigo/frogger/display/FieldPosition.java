@@ -113,9 +113,9 @@ public class FieldPosition {
     private String getSpritePath(){
         switch (spriteType){
             case PLAYER:
-                break;
+                return "C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rafa.png";
             case RATOS:
-                return "/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rato.png";
+                return "C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rato.png";
             case PADAWAN_SERGIO:
                 break;
             case PADAWAN_JORGE:
