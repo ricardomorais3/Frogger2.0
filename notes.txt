@@ -1,4 +1,4 @@
-﻿16 cols * 15 rows
+16 cols * 15 rows
 
 absolute dimensions = 512 * 480 px
 cellSize = 32 px
@@ -13,9 +13,10 @@ Este é o princípio dos jogos Game & Watch, pois não conseguem ter processamen
 veloz, mas mantém a sua gameplay
 
 Objectivos:
-interface gráfica para todos testarmos os nossos papeis.
-cada um desenvolve uma personagem (rato, player) sem definir a interação que têm com outros, so o comportamento básico.
-no final fazemos as interacções com player.
+por quadro de pontuações
+por catarina a passar na segunda zona segura com um balão de fala a dizer summarizer.
+apanhar garrafas de vinho para pontos na primeira estrada com ratos.
+objectivo e ir aos macs e trazer o summarizer de volta para a zona inicial.
 
 Como definir speeds diferentes:
 
