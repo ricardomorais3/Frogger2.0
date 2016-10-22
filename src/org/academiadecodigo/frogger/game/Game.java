@@ -24,8 +24,11 @@ public class Game {
     public void init() {
 
         player = new Player(field);
-        moveables = GameObjectFactory.getMoveables(field);
-        collidables = GameObjectFactory.getCollidables(moveables);
+        GameObjectFactory gameObjectFactory = new GameObjectFactory();
+        gameObjectFactory.fieldMapper(field);
+
+        moveables = gameObjectFactory.getMoveables();
+        collidables = gameObjectFactory.getCollidables();
 
     }
 
@@ -49,8 +52,8 @@ public class Game {
         }
         for (int i = 0; i < moveables.length; i++) {
             moveables[i].move();
-            checkCollisions();
         }
+            checkCollisions();
     }
 
     private void checkCollisions() {

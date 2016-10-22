@@ -49,9 +49,6 @@ public class Player implements Moveable, KeyboardHandler {
             return;
         }
         pos.moveInDirection(dir, 1);
-
-        // ADD Collision to check every move and to not be GODLIKE.
-        //  This way don't need to be on moveAll loop.
     }
 
     public void keyPressed(KeyboardEvent keyboardEvent) {

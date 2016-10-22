@@ -12,40 +12,83 @@ import java.util.HashSet;
  */
 public class GameObjectFactory {
 
-    public static Moveable[] getMoveables(Field field){
+    private Moveable[] moveables;
+    private Collidable[] collidables;
 
-        Moveable[] moveables = new Moveable[13];
+    public void fieldMapper(Field field) {
 
-        moveables[0] = new Rat(field.makeFieldPosition(17,12,SpriteTypes.RATOS), Direction.LEFT,0);
-        moveables[1] = new Rat(field.makeFieldPosition(12,12,SpriteTypes.RATOS), Direction.LEFT,0);
-        moveables[2] = new Rat(field.makeFieldPosition(7,12,SpriteTypes.RATOS), Direction.LEFT,0);
+        String[][] objectMap = {
 
-        moveables[3] = new Rat(field.makeFieldPosition(1,11,SpriteTypes.RATOS), Direction.RIGHT,1);
-        moveables[4] = new Rat(field.makeFieldPosition(7,11,SpriteTypes.RATOS), Direction.RIGHT,1);
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  "},
+                {"  ", "RR", "  ", "  ", "  ", "  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL"},
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "PL", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "}};
 
-        moveables[5] = new Rat(field.makeFieldPosition(15,10,SpriteTypes.RATOS), Direction.LEFT,0);
-        moveables[6] = new Rat(field.makeFieldPosition(10,10,SpriteTypes.RATOS), Direction.LEFT,0);
-        moveables[7] = new Rat(field.makeFieldPosition(5,10,SpriteTypes.RATOS), Direction.LEFT,0);
-
-        moveables[8] = new Rat(field.makeFieldPosition(3,9,SpriteTypes.RATOS), Direction.RIGHT,1);
-        moveables[9] = new Rat(field.makeFieldPosition(9,9,SpriteTypes.RATOS), Direction.RIGHT,1);
-
-        moveables[10] = new Rat(field.makeFieldPosition(13,8,SpriteTypes.RATOS), Direction.LEFT,1);
-        moveables[11] = new Rat(field.makeFieldPosition(8,8,SpriteTypes.RATOS), Direction.LEFT,1);
-        moveables[12] = new Rat(field.makeFieldPosition(3,8,SpriteTypes.RATOS), Direction.LEFT,1);
-
-
-        return moveables;
+        fieldPopulator(objectMap, field);
 
     }
 
-    public static Collidable[] getCollidables(Moveable[] moveables){
+    private void fieldPopulator(String[][] objectMap, Field field) {
 
-        Collidable[] collidables = new Collidable[moveables.length];
-        for (int i = 0; i < moveables.length; i++) {
-            collidables[i] = (Collidable)moveables[i];
+        moveables = new Moveable[13];
+        collidables = new Collidable[13];
+
+        for (int row = 0; row < field.getRows(); row++) {
+            for (int col = 0; col < field.getCols(); col++) {
+
+                switch (objectMap[row][col]) {
+                    case "RR":
+                        Rat r1 = new Rat(field.makeFieldPosition(col, row, SpriteTypes.RATOS), Direction.RIGHT, 0);
+                        addMoveable(r1);
+                        addCollidable(r1);
+                        break;
+                    case "RL":
+                        Rat r2 = new Rat(field.makeFieldPosition(col, row, SpriteTypes.RATOS), Direction.LEFT, 1);
+                        addMoveable(r2);
+                        addCollidable(r2);
+                        break;
+                }
+            }
         }
+    }
+
+    private void addMoveable(Moveable moveable) {
+        for (int i = 0; i < moveables.length; i++) {
+            if (moveables[i] == null) {
+                moveables[i] = moveable;
+                return;
+            }
+        }
+    }
+
+    private void addCollidable(Collidable collidable) {
+        for (int i = 0; i < collidables.length; i++) {
+            if (collidables[i] == null) {
+                collidables[i] = collidable;
+                return;
+            }
+        }
+    }
+
+    public Moveable[] getMoveables() {
+        return moveables;
+    }
+
+    public Collidable[] getCollidables() {
         return collidables;
     }
 
 }
+
+
