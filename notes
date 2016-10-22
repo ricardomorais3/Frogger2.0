@@ -29,6 +29,10 @@ Como definir speeds diferentes:
 	valor que seja múltiplo comum a todos os objectos e as suas velocidades.
 
 
+ /*TODO preloading. load all images in an array 
+    the size of the array is the number of objects that need a sprite. the preload is made on the creation of the field.*/
+
+
 De vez em quando acontece isto:
 Exception in thread "main" java.util.ConcurrentModificationException
 	at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:901)

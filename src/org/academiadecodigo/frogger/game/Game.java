@@ -10,6 +10,8 @@ import org.academiadecodigo.frogger.gameobjects.*;
  */
 public class Game {
 
+    public static int os;
+
     private Field field;
     private Player player;
     private int delay;
@@ -21,7 +23,8 @@ public class Game {
         this.delay = delay;
     }
 
-    public void init() {
+    public void init(int os) {
+        this.os = os;
 
         player = new Player(field);
         GameObjectFactory gameObjectFactory = new GameObjectFactory();

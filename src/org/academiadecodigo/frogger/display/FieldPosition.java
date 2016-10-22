@@ -20,7 +20,7 @@ public class FieldPosition {
         this.row = row;
         this.field = field;
         this.spriteType = spriteType;
-        sprite = new Picture(field.columnToX(col), field.rowToY(row), getSpritePath());
+        sprite = new Picture(field.columnToX(col), field.rowToY(row), spriteType.getPath());
         sprite.draw();
     }
 
@@ -44,7 +44,7 @@ public class FieldPosition {
         this.col = col;
         this.row = row;
         sprite.delete();
-        sprite = new Picture(field.columnToX(col), field.rowToY(row), getSpritePath());
+        sprite = new Picture(field.columnToX(col), field.rowToY(row), spriteType.getPath());
         sprite.draw();
     }
 
@@ -110,21 +110,6 @@ public class FieldPosition {
         return this.col == pos.getCol() && this.row == pos.getRow() ? true : false;
     }
 
-    private String getSpritePath(){
-        switch (spriteType){
-            case PLAYER:
-                return "/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rafa.png";
-            case RATOS:
-                return "/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rato.png";
-            case PADAWAN_SERGIO:
-                break;
-            case PADAWAN_JORGE:
-                break;
-            case PADAWAN_ANTONINHO:
-                break;
-        }
-        return null;
-    }
 
     @Override
     public String toString() {
