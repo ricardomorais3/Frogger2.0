@@ -51,7 +51,7 @@ public class GameObjectFactory {
 
                 switch (objectMap[row][col]) {
                     case "RR":
-                        Rat r1 = new Rat(field.makeFieldPosition(col, row, SpriteTypes.RATOS), Direction.RIGHT, 0);
+                        Rat r1 = new Rat(field.makeFieldPosition(col, row, SpriteTypes.PATOS), Direction.RIGHT, 0);
                         addMoveable(r1);
                         addCollidable(r1);
                         break;
@@ -61,11 +61,11 @@ public class GameObjectFactory {
                         addCollidable(r2);
                         break;
                     case "G ":
-                        Grass g1 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.PLAYER));
+                        Grass g1 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g1);
                         break;
                     case "P ":
-                        Grass g2 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.PLAYER));
+                        Grass g2 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g2);
                         Padawan p = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.RATOS), Direction.LEFT);
                         addPadawan(p);

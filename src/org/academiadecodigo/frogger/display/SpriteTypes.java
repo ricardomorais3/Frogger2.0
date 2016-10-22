@@ -7,10 +7,10 @@ import org.academiadecodigo.frogger.game.Game;
  */
 public enum SpriteTypes {
     FIELD ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\field.gif"),
-    PLAYER ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rafa.png", "C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rafa.png"),
+    PLAYER("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rafa.png", "C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rafa.png"),
     RATOS ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rato.png","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rato.png"),
-    GRASS ("","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\grass.png"),
-    PATOS ("",""),
+    GRASS ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/grass.png","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\grass.png"),
+    PATOS ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/duck.png",""),
     PUFF3 ("",""),
     PUFF4 ("",""),
     PUFF5 ("",""),
