@@ -12,7 +12,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 /**
  * Created by codecadet on 21/10/16.
  */
-public class Player implements Moveable,KeyboardHandler {
+public class Player implements Moveable, KeyboardHandler {
 
 
     private FieldPosition pos;
@@ -38,9 +38,15 @@ public class Player implements Moveable,KeyboardHandler {
 
 
     public void move() {
-        pos.moveInDirection(dir, 1);      // ADD Collision to check every move and to not be GODLIKE.
-        //  This way don't need to be on moveAll loop.
 
+        if (pos.getCol() == 1 && dir == Direction.LEFT ||
+                pos.getCol() == pos.getFieldCols()-2 && dir == Direction.RIGHT) {
+            return;
+        }
+        pos.moveInDirection(dir, 1);
+
+        // ADD Collision to check every move and to not be GODLIKE.
+        //  This way don't need to be on moveAll loop.
     }
 
     public void keyPressed(KeyboardEvent keyboardEvent) {

@@ -7,9 +7,9 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Game g1 = new Game();
+        Game g1 = new Game(200);
         g1.init();
-        //g1.start();
+        g1.start();
 
     }
 

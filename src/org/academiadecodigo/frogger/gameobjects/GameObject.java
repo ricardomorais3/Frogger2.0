@@ -2,7 +2,6 @@ package org.academiadecodigo.frogger.gameobjects;
 
 import org.academiadecodigo.frogger.display.FieldPosition;
 
-
 /**
  * Created by codecadet on 17/10/16.
  */

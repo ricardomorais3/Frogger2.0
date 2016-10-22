@@ -16,25 +16,26 @@ public class Game {
     private Moveable[] moveables;
     private Collidable[] collidables;
 
-    public Game() {
+    public Game(int delay) {
         this.field = new Field(18, 15);
+        this.delay = delay;
     }
 
     public void init() {
 
         player = new Player(field);
-        //moveables = new Moveable[0];
-        moveables = GameObjectFactory.getGameObject(field);
-        collidables = new Collidable[0];
+        moveables = GameObjectFactory.getMoveables(field);
+        collidables = GameObjectFactory.getCollidables(moveables);
+
     }
 
     public void start() throws InterruptedException {
 
 
-        while (!player.isDead()) { //adicionar condicao de vitoria (player.getPos().getRow() == 0)
+        while (!player.isDead()) {
 
-            field.blackLimitsRedraw(); // no final de cada turno esta linha tem que correr
-            Thread.sleep(400);
+            field.blackLimitsRedraw(); // Gives color to the vertical borders of the Field.
+            Thread.sleep(delay);
 
             moveAll();
         }
