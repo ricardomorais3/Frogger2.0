@@ -23,7 +23,7 @@ public class Player implements Moveable, KeyboardHandler {
 
     public Player(Field field) {
         keyboardInit();
-        this.pos = new FieldPosition(9, 14, field, SpriteTypes.RATOS);
+        this.pos = new FieldPosition(9, 14, field, SpriteTypes.PLAYER);
     }
 
     public boolean isDead() {
