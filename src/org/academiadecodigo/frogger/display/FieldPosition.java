@@ -2,6 +2,7 @@ package org.academiadecodigo.frogger.display;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 18/10/16.
@@ -11,24 +12,15 @@ public class FieldPosition {
     private int col;
     private int row;
     private Field field;
+    private SpriteTypes spriteType;
+    private Picture sprite;
 
-    //VISUAL PART TODO Replace with only a sprite
-    //private SpriteTypes sprite
-    private Rectangle sprite;
-    private Color spriteColor;
-
-    public FieldPosition(int col, int row, Field field /*, SpriteTypes sprite */){
+    public FieldPosition(int col, int row, Field field , SpriteTypes spriteType ){
         this.col = col;
         this.row = row;
         this.field = field;
-        //this.sprite = sprite
-        //make sprite be drawn with method
-
-        //TODO Replace with only a sprite
-        sprite = new Rectangle(field.columnToX(col), field.rowToY(row), Field.CELL_SIZE, Field.CELL_SIZE);
-        sprite.setColor(Color.BLUE);
-        sprite.fill();
-
+        this.spriteType = spriteType;
+        sprite = new Picture(field.columnToX(col), field.rowToY(row), getSpritePath());
     }
 
     public int getFieldCols(){
@@ -50,13 +42,6 @@ public class FieldPosition {
     public void setPos(int col, int row){
         this.col = col;
         this.row = row;
-        sprite.delete();
-        //make sprite be drawn with method
-
-        //TODO Replace with only a sprite
-        sprite = new Rectangle(field.columnToX(col), field.rowToY(row), Field.CELL_SIZE, Field.CELL_SIZE);
-        sprite.setColor(Color.BLUE);
-        sprite.fill();
     }
 
     public void moveInDirection(Direction direction, int dist){
@@ -119,6 +104,21 @@ public class FieldPosition {
 
     public boolean equals(FieldPosition pos) {
         return this.col == pos.getCol() && this.row == pos.getRow() ? true : false;
+    }
+
+    private String getSpritePath(){
+        switch (spriteType){
+            case PLAYER:
+                break;
+            case RATOS:
+                break;
+            case PADAWAN_SERGIO:
+                break;
+            case PADAWAN_JORGE:
+                break;
+            case PADAWAN_ANTONINHO:
+                break;
+        }
     }
 
     @Override
