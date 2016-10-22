@@ -15,6 +15,7 @@ public class Game {
     private int delay;
     private Moveable[] moveables;
     private Collidable[] collidables;
+    private Padawan[] padawans;
 
     public Game(int delay) {
         this.field = new Field(18, 15);
@@ -29,6 +30,7 @@ public class Game {
 
         moveables = gameObjectFactory.getMoveables();
         collidables = gameObjectFactory.getCollidables();
+        padawans = gameObjectFactory.getPadawans();
 
     }
 
@@ -50,10 +52,15 @@ public class Game {
         if(player.getWillMove()){
             player.move();
         }
+
         for (int i = 0; i < moveables.length; i++) {
             moveables[i].move();
         }
+
+        if (!checkCarried()){
             checkCollisions();
+        }
+
     }
 
     private void checkCollisions() {
@@ -63,6 +70,15 @@ public class Game {
                 return;
             }
         }
+    }
+
+    private boolean checkCarried() {
+        for (int i = 0; i < padawans.length; i++) {
+            if (player.getPos().equals(padawans[i].getPos())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

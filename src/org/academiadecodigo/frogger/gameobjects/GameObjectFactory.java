@@ -14,6 +14,7 @@ public class GameObjectFactory {
 
     private Moveable[] moveables;
     private Collidable[] collidables;
+    private Padawan[] padawans;
 
     public void fieldMapper(Field field) {
 
@@ -21,11 +22,11 @@ public class GameObjectFactory {
 
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
-                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
-                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
-                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
-                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
-                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
@@ -42,7 +43,8 @@ public class GameObjectFactory {
     private void fieldPopulator(String[][] objectMap, Field field) {
 
         moveables = new Moveable[13];
-        collidables = new Collidable[13];
+        collidables = new Collidable[13+80];
+        padawans = new Padawan[5];
 
         for (int row = 0; row < field.getRows(); row++) {
             for (int col = 0; col < field.getCols(); col++) {
@@ -57,6 +59,16 @@ public class GameObjectFactory {
                         Rat r2 = new Rat(field.makeFieldPosition(col, row, SpriteTypes.RATOS), Direction.LEFT, 1);
                         addMoveable(r2);
                         addCollidable(r2);
+                        break;
+                    case "G ":
+                        Grass g1 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.PLAYER));
+                        addCollidable(g1);
+                        break;
+                    case "P ":
+                        Grass g2 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.PLAYER));
+                        addCollidable(g2);
+                        Padawan p = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.RATOS), Direction.LEFT);
+                        addPadawan(p);
                         break;
                 }
             }
@@ -81,6 +93,16 @@ public class GameObjectFactory {
         }
     }
 
+    private void addPadawan(Padawan padawan) {
+        for (int i = 0; i < padawans.length; i++) {
+            if (padawans[i] == null) {
+                padawans[i] = padawan;
+                return;
+            }
+        }
+    }
+
+
     public Moveable[] getMoveables() {
         return moveables;
     }
@@ -89,6 +111,9 @@ public class GameObjectFactory {
         return collidables;
     }
 
+    public Padawan[] getPadawans() {
+        return padawans;
+    }
 }
 
 

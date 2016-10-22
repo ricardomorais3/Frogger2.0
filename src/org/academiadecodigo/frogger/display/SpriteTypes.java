@@ -8,5 +8,6 @@ public enum SpriteTypes {
     RATOS,
     PADAWAN_SERGIO,
     PADAWAN_JORGE,
-    PADAWAN_ANTONINHO
+    PADAWAN_ANTONINHO,
+    GRASS
 }
