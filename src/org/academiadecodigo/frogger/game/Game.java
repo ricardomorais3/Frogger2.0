@@ -18,6 +18,7 @@ public class Game {
     private Moveable[] moveables;
     private Collidable[] collidables;
     private Padawan[] padawans;
+    private int carrierIndex;
 
     public Game(int delay) {
         this.field = new Field(18, 15);
@@ -67,6 +68,10 @@ public class Game {
 
         for (int i = 0; i < moveables.length; i++) {
             moveables[i].move();
+            if(checkCarried()){
+                player.getPos().setPos(padawans[carrierIndex].getPos().getCol(),padawans[carrierIndex].getPos().getRow());
+                //reavaliar para o interface draggable
+            }
         }
 
         if (!checkCarried()) {
@@ -87,7 +92,7 @@ public class Game {
     private boolean checkCarried() {
         for (int i = 0; i < padawans.length; i++) {
             if (player.getPos().equals(padawans[i].getPos())) {
-                //player.getPos().setPos(padawans[i].getPos().getCol(),padawans[i].getPos().getRow()); - reavaliar para o interface draggable
+                carrierIndex = i;
                 return true;
             }
         }

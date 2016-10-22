@@ -22,11 +22,11 @@ public class GameObjectFactory {
 
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
-                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "P ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "P ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "P ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "P ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "P ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "G ", "G ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
@@ -42,9 +42,9 @@ public class GameObjectFactory {
 
     private void fieldPopulator(String[][] objectMap, Field field) {
 
-        moveables = new Moveable[13/*+10*/];
+        moveables = new Moveable[13+1/*+10*/];
         collidables = new Collidable[13+80];
-        padawans = new Padawan[10];
+        padawans = new Padawan[1];
 
         for (int row = 0; row < field.getRows(); row++) {
             for (int col = 0; col < field.getCols(); col++) {
@@ -67,9 +67,9 @@ public class GameObjectFactory {
                     case "P ":
                         Grass g2 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g2);
-                        Padawan p = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.RATOS), Direction.LEFT);
+                        Padawan p = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.PATOS), Direction.LEFT,1);
                         addPadawan(p);
-                        //addMoveable(p);
+                        addMoveable(p);
                         break;
                 }
             }
