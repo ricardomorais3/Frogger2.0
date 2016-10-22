@@ -19,6 +19,7 @@ public class Player implements Moveable, KeyboardHandler {
     private FieldPosition pos;
     private Direction dir;
     private boolean dead;
+    private boolean willMove;
 
     public Player(Field field) {
         keyboardInit();
@@ -37,9 +38,12 @@ public class Player implements Moveable, KeyboardHandler {
         return pos;
     }
 
+    public boolean getWillMove() {
+        return willMove;
+    }
 
     public void move() {
-
+        willMove = false;
         if (pos.getCol() == 1 && dir == Direction.LEFT ||
                 pos.getCol() == pos.getFieldCols()-2 && dir == Direction.RIGHT) {
             return;
@@ -55,19 +59,19 @@ public class Player implements Moveable, KeyboardHandler {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
                 dir = Direction.UP;
-                move();
+                willMove = true;
                 break;
             case KeyboardEvent.KEY_DOWN:
                 dir = Direction.DOWN;
-                move();
+                willMove = true;
                 break;
             case KeyboardEvent.KEY_RIGHT:
                 dir = Direction.RIGHT;
-                move();
+                willMove = true;
                 break;
             case KeyboardEvent.KEY_LEFT:
                 dir = Direction.LEFT;
-                move();
+                willMove = true;
                 break;
             default:
                 System.out.println("Something went terribly wrong");

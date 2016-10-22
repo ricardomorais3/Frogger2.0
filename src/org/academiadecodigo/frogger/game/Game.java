@@ -44,6 +44,9 @@ public class Game {
 
     private void moveAll() {
 
+        if(player.getWillMove()){
+            player.move();
+        }
         for (int i = 0; i < moveables.length; i++) {
             moveables[i].move();
             checkCollisions();
