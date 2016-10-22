@@ -24,11 +24,11 @@ public enum SpriteTypes {
     }
 
     public String getPath() {
-        if(Game.os == 0){
+        if (Game.os == 0) {
             return macPath;
-        }
-        else {
+        } else {
             return winPath;
         }
     }
+}
 
