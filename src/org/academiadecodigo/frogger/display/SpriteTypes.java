@@ -6,11 +6,14 @@ import org.academiadecodigo.frogger.game.Game;
  * Created by codecadet on 21/10/16.
  */
 public enum SpriteTypes {
-    PLAYER("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rafa.png", "C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rafa.png"),
+    FIELD ("","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\field.gif"),
+    PLAYER ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rafa.png", "C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rafa.png"),
     RATOS ("","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rato.png"),
-    PADAWAN_SERGIO ("",""),
-    PADAWAN_JORGE ("",""),
-    PADAWAN_ANTONINHO ("","");
+    PATOS ("",""),
+    PUFF3 ("",""),
+    PUFF4 ("",""),
+    PUFF5 ("",""),
+    MAC ("","");
 
     private String macPath;
     private String winPath;

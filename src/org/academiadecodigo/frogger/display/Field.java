@@ -2,6 +2,7 @@ package org.academiadecodigo.frogger.display;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 18/10/16.
@@ -13,7 +14,7 @@ public class Field {
     private int cols;
     private int rows;
 
-    private Rectangle field;
+    private Picture field;
     private Rectangle fieldLimit1;
     private Rectangle fieldLimit2;
 
@@ -22,9 +23,8 @@ public class Field {
         this.rows = rows;
 
         //VISUAL PART
-        field = new Rectangle(PADDING, PADDING, cols * CELL_SIZE, rows * CELL_SIZE);
-        field.setColor(Color.DARK_GRAY);
-        field.fill();
+        field = new Picture(PADDING + CELL_SIZE, PADDING, "C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\field.gif");
+        field.draw();
 
     }
 
@@ -51,11 +51,11 @@ public class Field {
 
     public void blackLimitsRedraw(){
         fieldLimit1 = new Rectangle(PADDING, PADDING, CELL_SIZE, rows * CELL_SIZE);
-        fieldLimit1.setColor(Color.YELLOW);
-        fieldLimit1.draw();
+        fieldLimit1.setColor(Color.BLACK);
+        fieldLimit1.fill();
         fieldLimit2 = new Rectangle(columnToX(17),PADDING,CELL_SIZE,CELL_SIZE* rows);
-        fieldLimit2.setColor(Color.YELLOW);
-        fieldLimit2.draw();
+        fieldLimit2.setColor(Color.BLACK);
+        fieldLimit2.fill();
     }
 
 
