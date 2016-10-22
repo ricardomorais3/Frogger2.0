@@ -28,8 +28,8 @@ public class Field {
 
     }
 
-    public FieldPosition makeFieldPosition(int col, int row /*, SpriteTypes sprite */){
-        return new FieldPosition(col, row, this /*, sprite */);
+    public FieldPosition makeFieldPosition(int col, int row, SpriteTypes spriteType){
+        return new FieldPosition(col, row, this, spriteType);
     }
 
     public int getCols() {
