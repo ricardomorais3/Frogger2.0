@@ -38,6 +38,10 @@ public class Player implements Moveable, KeyboardHandler {
         return pos;
     }
 
+    public void setPos(FieldPosition pos) {
+        this.pos = pos;
+    }
+
     public boolean getWillMove() {
         return willMove;
     }

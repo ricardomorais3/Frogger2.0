@@ -49,15 +49,24 @@ public class Game {
 
     private void moveAll() {
 
-        if(player.getWillMove()){
+        if (player.getWillMove()) {
             player.move();
+
+            if (!checkCarried()) {
+                checkCollisions();
+
+                if (player.isDead()){
+                 return;
+                }
+            }
         }
+
 
         for (int i = 0; i < moveables.length; i++) {
             moveables[i].move();
         }
 
-        if (!checkCarried()){
+        if (!checkCarried()) {
             checkCollisions();
         }
 
@@ -75,6 +84,7 @@ public class Game {
     private boolean checkCarried() {
         for (int i = 0; i < padawans.length; i++) {
             if (player.getPos().equals(padawans[i].getPos())) {
+                //player.getPos().setPos(padawans[i].getPos().getCol(),padawans[i].getPos().getRow()); - reavaliar para o interface draggable
                 return true;
             }
         }
