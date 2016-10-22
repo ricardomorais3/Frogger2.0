@@ -21,6 +21,7 @@ public class FieldPosition {
         this.field = field;
         this.spriteType = spriteType;
         sprite = new Picture(field.columnToX(col), field.rowToY(row), getSpritePath());
+        sprite.draw();
     }
 
     public int getFieldCols(){
@@ -42,6 +43,9 @@ public class FieldPosition {
     public void setPos(int col, int row){
         this.col = col;
         this.row = row;
+        sprite.delete();
+        sprite = new Picture(field.columnToX(col), field.rowToY(row), getSpritePath());
+        sprite.draw();
     }
 
     public void moveInDirection(Direction direction, int dist){
@@ -111,7 +115,7 @@ public class FieldPosition {
             case PLAYER:
                 break;
             case RATOS:
-                break;
+                return "/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rato.png";
             case PADAWAN_SERGIO:
                 break;
             case PADAWAN_JORGE:
@@ -119,6 +123,7 @@ public class FieldPosition {
             case PADAWAN_ANTONINHO:
                 break;
         }
+        return null;
     }
 
     @Override

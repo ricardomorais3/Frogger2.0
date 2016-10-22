@@ -3,6 +3,7 @@ package org.academiadecodigo.frogger.game;
 import org.academiadecodigo.frogger.display.Direction;
 import org.academiadecodigo.frogger.display.Field;
 import org.academiadecodigo.frogger.display.FieldPosition;
+import org.academiadecodigo.frogger.display.SpriteTypes;
 import org.academiadecodigo.frogger.gameobjects.Moveable;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -21,7 +22,7 @@ public class Player implements Moveable, KeyboardHandler {
 
     public Player(Field field) {
         keyboardInit();
-        this.pos = new FieldPosition(9, 14, field);
+        this.pos = new FieldPosition(9, 14, field, SpriteTypes.RATOS);
     }
 
     public boolean isDead() {
