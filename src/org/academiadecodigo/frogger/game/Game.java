@@ -59,25 +59,30 @@ public class Game {
             if (!checkCarried()) {
                 checkCollisions();
 
-                if (player.isDead()){
-                 return;
+                if (player.isDead()) {
+                    return;
                 }
             }
         }
 
-
         for (int i = 0; i < moveables.length; i++) {
-            moveables[i].move();
-            if(checkCarried()){
-                player.getPos().setPos(padawans[carrierIndex].getPos().getCol(),padawans[carrierIndex].getPos().getRow());
-                //reavaliar para o interface draggable
+
+            if(moveables[i] instanceof Padawan && player.getPos().equals(((Padawan)moveables[i]).getPos())){
+            //if (checkCarried() && moveables[i] == padawans[carrierIndex]) {
+                moveables[i].move();
+                //System.out.println(1 - padawans[carrierIndex].getMoveCounter());
+
+                //player.move(padawans[carrierIndex].getDirection(), (1 - padawans[carrierIndex].getMoveCounter()));
+                player.move(((Padawan)moveables[i]).getDirection(),1-((Padawan)moveables[i]).getMoveCounter());
+
+            } else {
+                moveables[i].move();
             }
         }
 
-        if (!checkCarried()) {
+        if (!checkCarried2()) {
             checkCollisions();
         }
-
     }
 
     private void checkCollisions() {
@@ -97,6 +102,17 @@ public class Game {
             }
         }
         return false;
+    }
+
+    private boolean checkCarried2() {
+
+        for (int i = 0; i < padawans.length; i++) {
+            if (player.getPos().equals(padawans[i].getPos())) {
+                return true;
+            }
+        }
+        return false;
+
     }
 
 }

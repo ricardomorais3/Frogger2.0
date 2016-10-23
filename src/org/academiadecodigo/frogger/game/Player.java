@@ -46,13 +46,17 @@ public class Player implements Moveable, KeyboardHandler {
         return willMove;
     }
 
-    public void move() {
+    public void move(){
         willMove = false;
         if (pos.getCol() == 1 && dir == Direction.LEFT ||
                 pos.getCol() == pos.getFieldCols()-2 && dir == Direction.RIGHT) {
             return;
         }
         pos.moveInDirection(dir, 1);
+    }
+
+    public void move(Direction dir, int move){
+        pos.moveInDirection(dir, move);
     }
 
     public void keyPressed(KeyboardEvent keyboardEvent) {

@@ -26,7 +26,7 @@ public class GameObjectFactory {
                 {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
                 {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
                 {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "P ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
@@ -34,7 +34,7 @@ public class GameObjectFactory {
                 {"  ", "RR", "  ", "  ", "  ", "  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL"},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
-                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "PL", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "}};
+                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "PA", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "}};
 
         fieldPopulator(objectMap, field);
 
@@ -42,9 +42,9 @@ public class GameObjectFactory {
 
     private void fieldPopulator(String[][] objectMap, Field field) {
 
-        moveables = new Moveable[13+1/*+10*/];
+        moveables = new Moveable[13+6/*+10*/];
         collidables = new Collidable[13+80];
-        padawans = new Padawan[1];
+        padawans = new Padawan[6];
 
         for (int row = 0; row < field.getRows(); row++) {
             for (int col = 0; col < field.getCols(); col++) {
@@ -64,12 +64,19 @@ public class GameObjectFactory {
                         Grass g1 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g1);
                         break;
-                    case "P ":
+                    case "PR":
                         Grass g2 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g2);
-                        Padawan p = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.PATOS), Direction.LEFT,1);
-                        addPadawan(p);
-                        addMoveable(p);
+                        Padawan p1 = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.PATOS), Direction.RIGHT,1);
+                        addPadawan(p1);
+                        addMoveable(p1);
+                        break;
+                    case "PL":
+                        Grass g3 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
+                        addCollidable(g3);
+                        Padawan p2 = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.PATOS), Direction.LEFT,1);
+                        addPadawan(p2);
+                        addMoveable(p2);
                         break;
                 }
             }

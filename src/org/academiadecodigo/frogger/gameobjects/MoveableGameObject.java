@@ -20,6 +20,10 @@ public abstract class MoveableGameObject extends GameObject implements Moveable 
 
     }
 
+    public int getMoveCounter() {
+        return moveCounter;
+    }
+
     public Direction getDirection() {
         return direction;
     }
@@ -50,5 +54,9 @@ public abstract class MoveableGameObject extends GameObject implements Moveable 
                 getPos().moveInDirection(getDirection(), 1);
             }
         }
+    }
+
+    public int getMaxMoveCount() {
+        return maxMoveCount;
     }
 }
