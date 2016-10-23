@@ -19,11 +19,11 @@ public class GameObjectFactory {
 
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "G ", "G ", "G ", "M ", "G ", "G ", "M ", "G ", "G ", "M ", "G ", "G ", "M ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "PL", "PL", "PL", "PL", "PL", "PL", "PL", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "PL", "PL", "PL", "PL", "PL", "PL", "PL", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "PR", "PR", "PR", "  "},
+                {"  ", "PL", "PL", "G ", "G ", "G ", "PL", "PL", "G ", "G ", "G ", "PL", "PL", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "  "},
+                {"  ", "PR", "PR", "PR", "G ", "G ", "G ", "PR", "PR", "PR", "G ", "G ", "G ", "PR", "PR", "PR", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "PL", "PL", "G ", "G ", "PL", "PL", "G ", "G ", "PL", "PL", "G ", "G ", "G ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
@@ -80,7 +80,7 @@ public class GameObjectFactory {
                     case "PL":
                         Grass g3 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g3);
-                        Puff p2 = new Puff(field.makeFieldPosition(col, row, SpriteTypes.PUFF), Direction.LEFT,1);
+                        Puff p2 = new Puff(field.makeFieldPosition(col, row, SpriteTypes.PUFF), Direction.LEFT,0);
                         addPuff(p2);
                         addMoveable(p2);
                         break;
