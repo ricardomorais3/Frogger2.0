@@ -19,11 +19,11 @@ public class GameObjectFactory {
 
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "G ", "G ", "G ", "M ", "G ", "G ", "M ", "G ", "G ", "M ", "G ", "G ", "M ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "PL", "PL", "PL", "PL", "PL", "PL", "PL", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "PL", "PL", "PL", "PL", "PL", "PL", "PL", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "G ", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "PR", "PR", "PR", "  "},
+                {"  ", "PL", "PL", "G ", "G ", "G ", "PL", "PL", "G ", "G ", "G ", "PL", "PL", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "  "},
+                {"  ", "PR", "PR", "PR", "G ", "G ", "G ", "PR", "PR", "PR", "G ", "G ", "G ", "PR", "PR", "PR", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "PL", "PL", "G ", "G ", "PL", "PL", "G ", "G ", "PL", "PL", "G ", "G ", "G ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
@@ -37,11 +37,20 @@ public class GameObjectFactory {
 
     }
 
+    private void createArraysObjects(String[][] objectMap, Field field){
+
+        String[] arrayMoveables = {"RR", "RL", "PR", "PL"};
+        String[] arrayCollidables = {"G ", "RR", "RL", "PR", "PL"};
+        String[] arrayPoofs = {"PR", "PL"};
+
+        moveables = new Moveable[objectCounter(objectMap,field,arrayMoveables)];
+        collidables = new Collidable[objectCounter(objectMap,field,arrayCollidables)];
+        puffs = new Puff[objectCounter(objectMap,field,arrayPoofs)];
+    }
+
     private void fieldPopulator(String[][] objectMap, Field field) {
 
-        moveables = new Moveable[13+35/*+10*/];
-        collidables = new Collidable[13+92];
-        puffs = new Puff[35];
+        createArraysObjects(objectMap,field);
 
         for (int row = 0; row < field.getRows(); row++) {
             for (int col = 0; col < field.getCols(); col++) {
@@ -65,14 +74,14 @@ public class GameObjectFactory {
                         Grass g2 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g2);
                         Puff p1 = new Puff(field.makeFieldPosition(col, row, SpriteTypes.PUFF), Direction.RIGHT,1);
-                        addPadawan(p1);
+                        addPuff(p1);
                         addMoveable(p1);
                         break;
                     case "PL":
                         Grass g3 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g3);
-                        Puff p2 = new Puff(field.makeFieldPosition(col, row, SpriteTypes.PUFF), Direction.LEFT,1);
-                        addPadawan(p2);
+                        Puff p2 = new Puff(field.makeFieldPosition(col, row, SpriteTypes.PUFF), Direction.LEFT,0);
+                        addPuff(p2);
                         addMoveable(p2);
                         break;
                     case "M ":
@@ -81,6 +90,20 @@ public class GameObjectFactory {
                 }
             }
         }
+    }
+
+    private int objectCounter(String[][] objectMap, Field field, String[] str) {
+        int counter = 0;
+        for (int row = 0; row < field.getRows(); row++) {
+            for (int col = 0; col < field.getCols(); col++) {
+                for (int i = 0; i < str.length; i++) {
+                    if(objectMap[row][col].equals(str[i])){
+                        counter++;
+                    }
+                }
+            }
+        }
+        return counter;
     }
 
     private void addMoveable(Moveable moveable) {
@@ -101,7 +124,7 @@ public class GameObjectFactory {
         }
     }
 
-    private void addPadawan(Puff puff) {
+    private void addPuff(Puff puff) {
         for (int i = 0; i < puffs.length; i++) {
             if (puffs[i] == null) {
                 puffs[i] = puff;
@@ -109,7 +132,6 @@ public class GameObjectFactory {
             }
         }
     }
-
 
     public Moveable[] getMoveables() {
         return moveables;
@@ -123,5 +145,3 @@ public class GameObjectFactory {
         return puffs;
     }
 }
-
-
