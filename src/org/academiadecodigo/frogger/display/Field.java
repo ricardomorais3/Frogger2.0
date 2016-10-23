@@ -15,21 +15,17 @@ public class Field {
     private int rows;
 
     private Picture field;
-    private Rectangle fieldLimit1;
-    private Rectangle fieldLimit2;
+    private Rectangle background;
 
 
     public Field(int cols, int rows){
         this.cols = cols;
         this.rows = rows;
 
-        //LIMITS DRAW
-        fieldLimit1 = new Rectangle(PADDING, PADDING, CELL_SIZE, rows * CELL_SIZE);
-        fieldLimit1.setColor(Color.BLACK);
-        fieldLimit1.fill();
-        fieldLimit2 = new Rectangle(columnToX(cols-1),PADDING,CELL_SIZE,CELL_SIZE* rows);
-        fieldLimit2.setColor(Color.BLACK);
-        fieldLimit2.fill();
+        //BLACK BACKGROUND DRAW
+        background = new Rectangle(PADDING, PADDING, cols * CELL_SIZE, rows * CELL_SIZE);
+        background.setColor(Color.BLACK);
+        background.fill();
 
         //FIELD DRAW
         field = new Picture(PADDING + CELL_SIZE, PADDING, SpriteTypes.FIELD.getPath());

@@ -66,9 +66,10 @@ public class FieldPosition {
                 outofLimits = false;
             }
         }
+    }
 
-
-        //Player e puffs a ir para a direita sao os primeiros a fazer redraw, sendo ultrapassados pelos redraws da relva
+    public void playerRedraw(){
+        sprite.draw();
     }
 
     public void moveInDirection(Direction direction, int dist){
