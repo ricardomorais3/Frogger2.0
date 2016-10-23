@@ -69,6 +69,7 @@ public class FieldPosition {
     }
 
     public void playerRedraw(){
+        sprite.delete();
         sprite.draw();
     }
 

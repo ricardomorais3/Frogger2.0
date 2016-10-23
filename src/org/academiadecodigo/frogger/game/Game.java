@@ -59,6 +59,7 @@ public class Game {
             Thread.sleep(delay);
 
             moveAll();
+            player.getPos().playerRedraw();
         }
         /* LOSE PIC field.setField(new Picture( Field.PADDING + Field.CELL_SIZE,Field.PADDING ,Put the image here "));
                 field.redraw();
