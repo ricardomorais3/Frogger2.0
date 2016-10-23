@@ -13,6 +13,7 @@ Este é o princípio dos jogos Game & Watch, pois não conseguem ter processamen
 veloz, mas mantém a sua gameplay
 
 Objectivos:
+Preloading de imagens.
 por quadro de pontuações
 por catarina a passar na segunda zona segura com um balão de fala a dizer summarizer.
 apanhar garrafas de vinho para pontos na primeira estrada com ratos.
