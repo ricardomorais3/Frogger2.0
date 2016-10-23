@@ -67,14 +67,14 @@ public class GameObjectFactory {
                     case "PR":
                         Grass g2 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g2);
-                        Padawan p1 = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.MAC), Direction.RIGHT,1);
+                        Padawan p1 = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.PUFF), Direction.RIGHT,1);
                         addPadawan(p1);
                         addMoveable(p1);
                         break;
                     case "PL":
                         Grass g3 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g3);
-                        Padawan p2 = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.MAC), Direction.LEFT,1);
+                        Padawan p2 = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.PUFF), Direction.LEFT,1);
                         addPadawan(p2);
                         addMoveable(p2);
                         break;
