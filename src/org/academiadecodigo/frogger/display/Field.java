@@ -64,6 +64,11 @@ public class Field {
         fieldLimit2.fill();
     }
 
+    public void setField(Picture field) {
+        this.field = field;
+    }
 
-
+    public void redraw(){
+        field.draw();
+    }
 }

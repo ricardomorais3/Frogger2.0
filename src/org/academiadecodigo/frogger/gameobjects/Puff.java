@@ -6,9 +6,9 @@ import org.academiadecodigo.frogger.display.FieldPosition;
 /**
  * Created by codecadet on 22/10/16.
  */
-public class Padawan extends MoveableGameObject {
+public class Puff extends MoveableGameObject {
 
-    public Padawan(FieldPosition pos, Direction dir, int maxMoveCount) {
+    public Puff(FieldPosition pos, Direction dir, int maxMoveCount) {
         super(pos, dir, maxMoveCount);
     }
 

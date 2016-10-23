@@ -4,9 +4,6 @@ import org.academiadecodigo.frogger.display.Direction;
 import org.academiadecodigo.frogger.display.Field;
 import org.academiadecodigo.frogger.display.SpriteTypes;
 
-import java.util.HashMap;
-import java.util.HashSet;
-
 /**
  * Created by codecadet on 21/10/16.
  */
@@ -14,17 +11,17 @@ public class GameObjectFactory {
 
     private Moveable[] moveables;
     private Collidable[] collidables;
-    private Padawan[] padawans;
+    private Puff[] puffs;
 
-    public String[][] fieldMapper(Field field) {
+    public void fieldMapper(Field field) {
 
         String[][] objectMap = {
 
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
-                {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
-                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "G ", "M ", "G ", "G ", "M ", "G ", "G ", "M ", "G ", "G ", "M ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "PL", "PL", "PL", "PL", "PL", "PL", "PL", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
                 {"  ", "G ", "G ", "PL", "PL", "PL", "PL", "PL", "PL", "PL", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
                 {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
@@ -36,8 +33,7 @@ public class GameObjectFactory {
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "PA", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "}};
 
-        //fieldPopulator(objectMap, field);
-        return objectMap;
+        fieldPopulator(objectMap, field);
 
     }
 
@@ -49,7 +45,11 @@ public class GameObjectFactory {
 
         moveables = new Moveable[getNumberObjects(objectMap,field,arrayMoveables)];
         collidables = new Collidable[getNumberObjects(objectMap,field,arrayCollidables)];
-        padawans = new Padawan[getNumberObjects(objectMap,field,arrayPoofs)];
+        puffs = new Puff[getNumberObjects(objectMap,field,arrayPoofs)];
+
+        System.out.println("moveables "+getNumberObjects(objectMap,field,arrayMoveables));
+        System.out.println("collidables "+getNumberObjects(objectMap,field,arrayCollidables));
+        System.out.println("poofs "+getNumberObjects(objectMap,field,arrayPoofs));
 
         for (int row = 0; row < field.getRows(); row++) {
             for (int col = 0; col < field.getCols(); col++) {
@@ -72,16 +72,19 @@ public class GameObjectFactory {
                     case "PR":
                         Grass g2 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g2);
-                        Padawan p1 = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.PUFF), Direction.RIGHT,1);
-                        addPadawan(p1);
+                        Puff p1 = new Puff(field.makeFieldPosition(col, row, SpriteTypes.PUFF), Direction.RIGHT,1);
+                        addPuff(p1);
                         addMoveable(p1);
                         break;
                     case "PL":
                         Grass g3 = new Grass(field.makeFieldPosition(col, row, SpriteTypes.GRASS));
                         addCollidable(g3);
-                        Padawan p2 = new Padawan(field.makeFieldPosition(col, row, SpriteTypes.PUFF), Direction.LEFT,1);
-                        addPadawan(p2);
+                        Puff p2 = new Puff(field.makeFieldPosition(col, row, SpriteTypes.PUFF), Direction.LEFT,1);
+                        addPuff(p2);
                         addMoveable(p2);
+                        break;
+                    case "M ":
+                        Mac mac = new Mac(field.makeFieldPosition(col,row, SpriteTypes.MAC));
                         break;
                 }
             }
@@ -125,10 +128,10 @@ public class GameObjectFactory {
         }
     }
 
-    private void addPadawan(Padawan padawan) {
-        for (int i = 0; i < padawans.length; i++) {
-            if (padawans[i] == null) {
-                padawans[i] = padawan;
+    private void addPuff(Puff puff) {
+        for (int i = 0; i < puffs.length; i++) {
+            if (puffs[i] == null) {
+                puffs[i] = puff;
                 return;
             }
         }
@@ -143,9 +146,7 @@ public class GameObjectFactory {
         return collidables;
     }
 
-    public Padawan[] getPadawans() {
-        return padawans;
+    public Puff[] getPuffs() {
+        return puffs;
     }
 }
-
-
