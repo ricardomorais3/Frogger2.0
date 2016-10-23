@@ -7,12 +7,12 @@ import org.academiadecodigo.frogger.game.Game;
  */
 public enum SpriteTypes {
     FIELD ("/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\field.gif"),
-    PLAYER("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rafa.png","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rafa.png"),
-    RATOS ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rato.png","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rato.png"),
-    GRASS ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/grass.png","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\grass.png"),
-    PATOS ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/duck.png",""),
-    PUFF  ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/puff_circular.png",""),
-    MAC   ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/mac.png","");
+    PLAYER("/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rafa.png","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rafa.png"),
+    RATOS ("/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rato.png","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rato.png"),
+    GRASS ("/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/grass.png","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\grass.png"),
+    PATOS ("/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/duck.png",""),
+    PUFF  ("/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/puff_circular.png",""),
+    MAC   ("/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/mac.png","");
 
     private String macPath;
     private String winPath;

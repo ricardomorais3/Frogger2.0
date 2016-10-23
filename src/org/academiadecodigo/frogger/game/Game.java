@@ -21,7 +21,7 @@ public class Game {
     private Collidable[] collidables;
     private Puff[] puffs;
     private Puff carrierPuff;
-    private Clip clip;
+    private Clip clip,clipHop;
 
     public Game(int delay) {
         this.field = new Field(18, 15);
@@ -65,12 +65,14 @@ public class Game {
                 field.redraw();
                 break;*/
      clip.stop();
+        diedSound();
     }
 
     private void moveAll() {
 
         if (player.receivedKeyboardInput()) {
             player.move();
+            hopSound();
             if(playerHasDied()){
                 return;
             }
@@ -144,5 +146,43 @@ public class Game {
             e.printStackTrace();
         }
     }
+    private void hopSound(){
+        AudioInputStream audioInputStream = null;
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/Project/Frogger2.0/resources/musics/qubodup-cfork-ccby3-jump.wav"));
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            clipHop = AudioSystem.getClip();
+            clipHop.open(audioInputStream);
+            clipHop.start();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private void diedSound(){
+        AudioInputStream audioInputStream = null;
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/Project/Frogger2.0/resources/musics/Homer_Simpson_-_D_39_oh_.wav"));
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Clip clipDuh = AudioSystem.getClip();
+            clipDuh.open(audioInputStream);
+            clipDuh.start();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
