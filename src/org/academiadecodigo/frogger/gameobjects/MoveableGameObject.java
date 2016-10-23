@@ -28,6 +28,10 @@ public abstract class MoveableGameObject extends GameObject implements Moveable 
         return direction;
     }
 
+
+
+    // Moves GameObjects and when they reach the sidelines, their position goes back to where they start
+    // after two cicles, they start moving again
     @Override
     public void move() {
 
@@ -56,9 +60,6 @@ public abstract class MoveableGameObject extends GameObject implements Moveable 
         }
     }
 
-    public int getMaxMoveCount() {
-        return maxMoveCount;
-    }
 
     @Override
     public FieldPosition getPos() {

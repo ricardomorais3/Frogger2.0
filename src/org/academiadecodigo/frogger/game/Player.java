@@ -46,6 +46,8 @@ public class Player implements Moveable, KeyboardHandler {
         return keyboardInput;
     }
 
+
+    //Checks to see if the player in near the boundaries. If not, moves.
     public void move() {
         keyboardInput = false;
         if (pos.getCol() == 1 && dir == Direction.LEFT || pos.getCol() == pos.getFieldCols() - 2 && dir == Direction.RIGHT) {
@@ -54,6 +56,7 @@ public class Player implements Moveable, KeyboardHandler {
         pos.moveInDirection(dir, 1);
     }
 
+    //When player gets out of boundaries, dies. Else, moves in a direction.
     public void move(Direction dir, int move) {
 
         if (pos.getCol() == 1 || pos.getCol() == pos.getFieldCols() - 1) {
@@ -64,6 +67,7 @@ public class Player implements Moveable, KeyboardHandler {
         pos.moveInDirection(dir, move);
     }
 
+    //Sets player's direction based on a keyboard event.
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         switch (keyboardEvent.getKey()) {
@@ -94,6 +98,7 @@ public class Player implements Moveable, KeyboardHandler {
     }
 
 
+    //Keyboard events and keyboard listener
     public void keyboardInit() {
 
         Keyboard k = new Keyboard(this);

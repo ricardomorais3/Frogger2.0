@@ -13,6 +13,8 @@ public class GameObjectFactory {
     private Collidable[] collidables;
     private Puff[] puffs;
 
+
+    //GameObject Matrix where we define the specific position of every game object
     public void fieldMapper(Field field) {
 
         String[][] objectMap = {
@@ -37,6 +39,8 @@ public class GameObjectFactory {
 
     }
 
+
+    //Creates the arrays for the different types of game objects
     private void createArraysObjects(String[][] objectMap, Field field){
 
         String[] arrayMoveables = {"RR", "RL", "PR", "PL"};
@@ -48,6 +52,8 @@ public class GameObjectFactory {
         puffs = new Puff[objectCounter(objectMap,field,arrayPuffs)];
     }
 
+
+    //Populates the game objects arrays
     private void fieldPopulator(String[][] objectMap, Field field) {
 
         createArraysObjects(objectMap,field);
@@ -92,6 +98,7 @@ public class GameObjectFactory {
         }
     }
 
+    //Counts and returns the number of different objects in the object map for each array type.
     private int objectCounter(String[][] objectMap, Field field, String[] str) {
         int counter = 0;
         for (int row = 0; row < field.getRows(); row++) {
@@ -106,6 +113,8 @@ public class GameObjectFactory {
         return counter;
     }
 
+
+    //Adds movable objects to the moveables array
     private void addMoveable(Moveable moveable) {
         for (int i = 0; i < moveables.length; i++) {
             if (moveables[i] == null) {
@@ -115,6 +124,8 @@ public class GameObjectFactory {
         }
     }
 
+
+    //Adds collidable objects to the collidables array
     private void addCollidable(Collidable collidable) {
         for (int i = 0; i < collidables.length; i++) {
             if (collidables[i] == null) {
@@ -124,6 +135,8 @@ public class GameObjectFactory {
         }
     }
 
+
+    //Adds puffs to the puffs array
     private void addPuff(Puff puff) {
         for (int i = 0; i < puffs.length; i++) {
             if (puffs[i] == null) {
