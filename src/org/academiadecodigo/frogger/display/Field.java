@@ -18,7 +18,6 @@ public class Field {
     private Rectangle fieldLimit1;
     private Rectangle fieldLimit2;
 
-    //picture array (one per object)
 
     public Field(int cols, int rows){
         this.cols = cols;
@@ -26,9 +25,18 @@ public class Field {
 
         //VISUAL PART
         field = new Picture(PADDING + CELL_SIZE, PADDING, "/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif");
+        //LIMITS DRAW
+        fieldLimit1 = new Rectangle(PADDING, PADDING, CELL_SIZE, rows * CELL_SIZE);
+        fieldLimit1.setColor(Color.BLACK);
+        fieldLimit1.fill();
+        fieldLimit2 = new Rectangle(columnToX(cols-1),PADDING,CELL_SIZE,CELL_SIZE* rows);
+        fieldLimit2.setColor(Color.BLACK);
+        fieldLimit2.fill();
+
+        //FIELD DRAW
+        field = new Picture(PADDING + CELL_SIZE, PADDING, SpriteTypes.FIELD.getPath());
         field.draw();
 
-        //preload function
 
     }
 
@@ -36,7 +44,9 @@ public class Field {
         return new FieldPosition(col, row, this, spriteType);
     }
 
-    //preload all pictures in X = PADDING Y = PADDING
+    public void redraw(){
+        field.draw();
+    }
 
     public int getCols() {
         return cols;
@@ -55,20 +65,9 @@ public class Field {
         return row * CELL_SIZE + PADDING;
     }
 
-    public void blackLimitsRedraw(){
-        fieldLimit1 = new Rectangle(PADDING, PADDING, CELL_SIZE, rows * CELL_SIZE);
-        fieldLimit1.setColor(Color.BLACK);
-        fieldLimit1.fill();
-        fieldLimit2 = new Rectangle(columnToX(17),PADDING,CELL_SIZE,CELL_SIZE* rows);
-        fieldLimit2.setColor(Color.BLACK);
-        fieldLimit2.fill();
-    }
 
     public void setField(Picture field) {
         this.field = field;
     }
 
-    public void redraw(){
-        field.draw();
-    }
 }

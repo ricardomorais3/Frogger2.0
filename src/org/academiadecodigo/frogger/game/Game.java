@@ -58,7 +58,6 @@ public class Game {
                 return;
             }
 
-            field.blackLimitsRedraw(); // Gives color to the vertical borders of the Field.
             Thread.sleep(delay);
 
             moveAll();

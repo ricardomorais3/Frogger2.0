@@ -5,6 +5,8 @@ import org.academiadecodigo.frogger.game.Game;
 /**
  * Created by codecadet on 21/10/16.
  */
+
+//set paths to images
 public enum SpriteTypes {
 
     FIELD ("/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\field.gif"),
@@ -17,6 +19,7 @@ public enum SpriteTypes {
 
     private String macPath;
     private String winPath;
+
 
     SpriteTypes(String s, String s1) {
         macPath = s;
