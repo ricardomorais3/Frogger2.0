@@ -3,6 +3,10 @@ package org.academiadecodigo.frogger.game;
 import org.academiadecodigo.frogger.display.Field;
 import org.academiadecodigo.frogger.gameobjects.*;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Created by codecadet on 21/10/16.
  */
@@ -17,6 +21,7 @@ public class Game {
     private Collidable[] collidables;
     private Puff[] puffs;
     private Puff carrierPuff;
+    private Clip clip;
 
     public Game(int delay) {
         this.field = new Field(18, 15);
@@ -24,7 +29,9 @@ public class Game {
     }
 
     public void init(int os) {
+
         this.os = os;
+
 
         player = new Player(field);
         GameObjectFactory gameObjectFactory = new GameObjectFactory();
@@ -37,6 +44,8 @@ public class Game {
     }
 
     public void start() throws InterruptedException {
+
+        startMusic();
 
 
         while (!player.isDead()) {
@@ -55,7 +64,7 @@ public class Game {
         /* LOSE PIC field.setField(new Picture( Field.PADDING + Field.CELL_SIZE,Field.PADDING ,Put the image here "));
                 field.redraw();
                 break;*/
-
+     clip.stop();
     }
 
     private void moveAll() {
@@ -113,6 +122,27 @@ public class Game {
         }
         carrierPuff = null;
         return false;
+    }
+
+    private void startMusic() {
+        AudioInputStream audioInputStream = null;
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/Project/Frogger2.0/resources/musics/Axel_F_2F_Crazy_Frog_8_Bit.wav"));
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+            clip.loop(clip.LOOP_CONTINUOUSLY);
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
