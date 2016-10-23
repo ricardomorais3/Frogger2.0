@@ -65,4 +65,8 @@ public class Field {
         this.field = field;
     }
 
+    public void redraw(){
+        field.draw();
+    }
+
 }
