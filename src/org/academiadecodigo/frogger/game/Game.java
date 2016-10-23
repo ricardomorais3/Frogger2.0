@@ -2,6 +2,7 @@ package org.academiadecodigo.frogger.game;
 
 import org.academiadecodigo.frogger.display.Field;
 import org.academiadecodigo.frogger.gameobjects.*;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -21,7 +22,7 @@ public class Game {
     private Collidable[] collidables;
     private Puff[] puffs;
     private Puff carrierPuff;
-    private Clip clip,clipHop;
+    private Clip clip, clipHop;
 
     public Game(int delay) {
         this.field = new Field(18, 15);
@@ -50,10 +51,11 @@ public class Game {
 
         while (!player.isDead()) {
 
-            if (player.getPos().getRow() == 1){
-                /* WIN pic field.setField(new Picture( Field.PADDING + Field.CELL_SIZE,Field.PADDING ,Put the image here "));
-                field.redraw();*/
-                break;
+            if (player.getPos().getRow() == 1) {
+                field.setField(new Picture( Field.PADDING + Field.CELL_SIZE,Field.PADDING ,"/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/Winner.gif"));
+                field.redraw();
+                clip.stop();
+                return;
             }
 
             field.blackLimitsRedraw(); // Gives color to the vertical borders of the Field.
@@ -61,10 +63,10 @@ public class Game {
 
             moveAll();
         }
-        /* LOSE PIC field.setField(new Picture( Field.PADDING + Field.CELL_SIZE,Field.PADDING ,Put the image here "));
-                field.redraw();
-                break;*/
-     clip.stop();
+
+        field.setField(new Picture(Field.PADDING + Field.CELL_SIZE, Field.PADDING, "/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/gameover.gif"));
+        field.redraw();
+        clip.stop();
         diedSound();
     }
 
@@ -73,13 +75,13 @@ public class Game {
         if (player.receivedKeyboardInput()) {
             player.move();
             hopSound();
-            if(playerHasDied()){
+            if (playerHasDied()) {
                 return;
             }
         }
 
         moveGameObjects();
-        if(playerHasDied()){
+        if (playerHasDied()) {
             return;
         }
     }
@@ -146,7 +148,8 @@ public class Game {
             e.printStackTrace();
         }
     }
-    private void hopSound(){
+
+    private void hopSound() {
         AudioInputStream audioInputStream = null;
         try {
             audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/JavaProjects/Frogger2.0/resources/musics/qubodup-cfork-ccby3-jump.wav"));
@@ -166,10 +169,10 @@ public class Game {
         }
     }
 
-    private void diedSound(){
+    private void diedSound() {
         AudioInputStream audioInputStream = null;
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/JavaProjects/Frogger2.0/resources/musics/Homer_Simpson_-_D_39_oh_.wav"));
+            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/JavaProjects/Frogger2.0/resources/musics/Rafa.wav"));
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {
