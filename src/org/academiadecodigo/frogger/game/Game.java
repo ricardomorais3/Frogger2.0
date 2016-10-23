@@ -57,16 +57,18 @@ public class Game {
 
         if (player.receivedKeyboardInput()) {
             player.move();
-
-            if (!playerIsBeingCarried()) {
-                checkCollisions();
-
-                if (player.isDead()) {
-                    return;
-                }
+            if(playerHasDied()){
+                return;
             }
         }
 
+        moveGameObjects();
+        if(playerHasDied()){
+            return;
+        }
+    }
+
+    private void moveGameObjects() {
         for (Moveable moveable : moveables) {
 
             if (moveable.equals(carrierPadawan)) {
@@ -78,20 +80,23 @@ public class Game {
                 moveable.move();
             }
         }
-
-        if (!playerIsBeingCarried()) {
-            checkCollisions();
-        }
-
     }
 
-    private void checkCollisions() {
+    private boolean playerHasDied() {
+        if (!playerIsBeingCarried() && playerHasCollided()) {
+            player.setDead();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean playerHasCollided() {
         for (int i = 0; i < collidables.length; i++) {
             if (player.getPos().equals(collidables[i].getPos())) {
-                player.setDead();
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     private boolean playerIsBeingCarried() {
