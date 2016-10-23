@@ -25,8 +25,8 @@ public class GameObjectFactory {
                 {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
                 {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
                 {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
-                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "PL", "PL", "PL", "PL", "PL", "PL", "PL", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
+                {"  ", "G ", "G ", "PR", "PR", "PR", "PR", "PR", "PR", "PR", "G ", "G ", "G ", "G ", "G ", "G ", "G ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "RL", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "RR", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
@@ -42,9 +42,9 @@ public class GameObjectFactory {
 
     private void fieldPopulator(String[][] objectMap, Field field) {
 
-        moveables = new Moveable[13+6/*+10*/];
+        moveables = new Moveable[13+14/*+10*/];
         collidables = new Collidable[13+80];
-        padawans = new Padawan[6];
+        padawans = new Padawan[14];
 
         for (int row = 0; row < field.getRows(); row++) {
             for (int col = 0; col < field.getCols(); col++) {

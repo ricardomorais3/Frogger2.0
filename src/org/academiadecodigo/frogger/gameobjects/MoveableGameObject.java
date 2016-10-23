@@ -59,4 +59,9 @@ public abstract class MoveableGameObject extends GameObject implements Moveable 
     public int getMaxMoveCount() {
         return maxMoveCount;
     }
+
+    @Override
+    public FieldPosition getPos() {
+        return super.getPos();
+    }
 }

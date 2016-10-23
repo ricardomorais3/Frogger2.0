@@ -4,6 +4,7 @@ import org.academiadecodigo.frogger.display.Direction;
 import org.academiadecodigo.frogger.display.Field;
 import org.academiadecodigo.frogger.display.FieldPosition;
 import org.academiadecodigo.frogger.gameobjects.*;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 21/10/16.
@@ -18,7 +19,7 @@ public class Game {
     private Moveable[] moveables;
     private Collidable[] collidables;
     private Padawan[] padawans;
-    private int carrierIndex;
+    private Padawan carrierIndex;
 
     public Game(int delay) {
         this.field = new Field(18, 15);
@@ -43,6 +44,10 @@ public class Game {
 
         while (!player.isDead()) {
 
+            if (player.getPos().getRow() == 0){
+                field = new Picture(PADDING + CELL_SIZE, PADDING, "/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif");
+            }
+
             field.blackLimitsRedraw(); // Gives color to the vertical borders of the Field.
             Thread.sleep(delay);
 
@@ -65,24 +70,22 @@ public class Game {
             }
         }
 
-        for (int i = 0; i < moveables.length; i++) {
+        for (Moveable moveable : moveables) {
 
-            if(moveables[i] instanceof Padawan && player.getPos().equals(((Padawan)moveables[i]).getPos())){
-            //if (checkCarried() && moveables[i] == padawans[carrierIndex]) {
-                moveables[i].move();
-                //System.out.println(1 - padawans[carrierIndex].getMoveCounter());
+            if (moveable.equals(carrierIndex)) {
 
-                //player.move(padawans[carrierIndex].getDirection(), (1 - padawans[carrierIndex].getMoveCounter()));
-                player.move(((Padawan)moveables[i]).getDirection(),1-((Padawan)moveables[i]).getMoveCounter());
+                moveable.move();
+                player.move(((Padawan) moveable).getDirection(), (1 - carrierIndex.getMoveCounter()));
 
             } else {
-                moveables[i].move();
+                moveable.move();
             }
         }
 
-        if (!checkCarried2()) {
+        if (!checkCarried()) {
             checkCollisions();
         }
+
     }
 
     private void checkCollisions() {
@@ -97,10 +100,11 @@ public class Game {
     private boolean checkCarried() {
         for (int i = 0; i < padawans.length; i++) {
             if (player.getPos().equals(padawans[i].getPos())) {
-                carrierIndex = i;
+                carrierIndex = padawans[i];
                 return true;
             }
         }
+        carrierIndex = null;
         return false;
     }
 
