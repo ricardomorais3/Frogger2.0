@@ -2,6 +2,7 @@ package org.academiadecodigo.frogger.game;
 
 import org.academiadecodigo.frogger.display.Field;
 import org.academiadecodigo.frogger.gameobjects.*;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 21/10/16.
@@ -41,15 +42,20 @@ public class Game {
 
         while (!player.isDead()) {
 
-            //if (player.getPos().getRow() == 0){
-            //    field = new Picture(PADDING + CELL_SIZE, PADDING, "/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif");
-            //}
+            if (player.getPos().getRow() == 0){
+                /* WIN pic field.setField(new Picture( Field.PADDING + Field.CELL_SIZE,Field.PADDING ,Put the image here "));
+                field.redraw();
+                break;*/
+            }
 
             field.blackLimitsRedraw(); // Gives color to the vertical borders of the Field.
             Thread.sleep(delay);
 
             moveAll();
         }
+        /* LOSE PIC field.setField(new Picture( Field.PADDING + Field.CELL_SIZE,Field.PADDING ,Put the image here "));
+                field.redraw();
+                break;*/
 
     }
 

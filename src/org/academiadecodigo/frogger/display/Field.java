@@ -23,7 +23,7 @@ public class Field {
         this.rows = rows;
 
         //VISUAL PART
-        field = new Picture(PADDING + CELL_SIZE, PADDING, "/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif");
+        field = new Picture(PADDING + CELL_SIZE, PADDING, "/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif");
         field.draw();
 
     }
@@ -58,6 +58,11 @@ public class Field {
         fieldLimit2.fill();
     }
 
+    public void setField(Picture field) {
+        this.field = field;
+    }
 
-
+    public void redraw(){
+        field.draw();
+    }
 }
