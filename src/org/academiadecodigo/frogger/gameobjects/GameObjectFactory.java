@@ -41,11 +41,11 @@ public class GameObjectFactory {
 
         String[] arrayMoveables = {"RR", "RL", "PR", "PL"};
         String[] arrayCollidables = {"G ", "RR", "RL", "PR", "PL"};
-        String[] arrayPoofs = {"PR", "PL"};
+        String[] arrayPuffs = {"PR", "PL"};
 
         moveables = new Moveable[objectCounter(objectMap,field,arrayMoveables)];
         collidables = new Collidable[objectCounter(objectMap,field,arrayCollidables)];
-        puffs = new Puff[objectCounter(objectMap,field,arrayPoofs)];
+        puffs = new Puff[objectCounter(objectMap,field,arrayPuffs)];
     }
 
     private void fieldPopulator(String[][] objectMap, Field field) {
@@ -57,12 +57,12 @@ public class GameObjectFactory {
 
                 switch (objectMap[row][col]) {
                     case "RR":
-                        Rat r1 = new Rat(field.makeFieldPosition(col, row, SpriteTypes.PATOS), Direction.RIGHT, 0);
+                        Rat r1 = new Rat(field.makeFieldPosition(col, row, SpriteTypes.DUCK), Direction.RIGHT, 0);
                         addMoveable(r1);
                         addCollidable(r1);
                         break;
                     case "RL":
-                        Rat r2 = new Rat(field.makeFieldPosition(col, row, SpriteTypes.RATOS), Direction.LEFT, 1);
+                        Rat r2 = new Rat(field.makeFieldPosition(col, row, SpriteTypes.RAT), Direction.LEFT, 1);
                         addMoveable(r2);
                         addCollidable(r2);
                         break;
