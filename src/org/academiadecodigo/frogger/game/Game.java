@@ -2,7 +2,6 @@ package org.academiadecodigo.frogger.game;
 
 import org.academiadecodigo.frogger.display.Field;
 import org.academiadecodigo.frogger.gameobjects.*;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 21/10/16.
@@ -16,8 +15,8 @@ public class Game {
     private int delay;
     private Moveable[] moveables;
     private Collidable[] collidables;
-    private Padawan[] padawans;
-    private Padawan carrierPadawan;
+    private Puff[] puffs;
+    private Puff carrierPuff;
 
     public Game(int delay) {
         this.field = new Field(18, 15);
@@ -33,7 +32,7 @@ public class Game {
 
         moveables = gameObjectFactory.getMoveables();
         collidables = gameObjectFactory.getCollidables();
-        padawans = gameObjectFactory.getPadawans();
+        puffs = gameObjectFactory.getPuffs();
 
     }
 
@@ -42,10 +41,10 @@ public class Game {
 
         while (!player.isDead()) {
 
-            if (player.getPos().getRow() == 0){
+            if (player.getPos().getRow() == 1){
                 /* WIN pic field.setField(new Picture( Field.PADDING + Field.CELL_SIZE,Field.PADDING ,Put the image here "));
-                field.redraw();
-                break;*/
+                field.redraw();*/
+                break;
             }
 
             field.blackLimitsRedraw(); // Gives color to the vertical borders of the Field.
@@ -77,10 +76,10 @@ public class Game {
     private void moveGameObjects() {
         for (Moveable moveable : moveables) {
 
-            if (moveable.equals(carrierPadawan)) {
+            if (moveable.equals(carrierPuff)) {
 
                 moveable.move();
-                player.move(((Padawan) moveable).getDirection(), (1 - carrierPadawan.getMoveCounter()));
+                player.move(((Puff) moveable).getDirection(), (1 - carrierPuff.getMoveCounter()));
 
             } else {
                 moveable.move();
@@ -106,13 +105,13 @@ public class Game {
     }
 
     private boolean playerIsBeingCarried() {
-        for (int i = 0; i < padawans.length; i++) {
-            if (player.getPos().equals(padawans[i].getPos())) {
-                carrierPadawan = padawans[i];
+        for (int i = 0; i < puffs.length; i++) {
+            if (player.getPos().equals(puffs[i].getPos())) {
+                carrierPuff = puffs[i];
                 return true;
             }
         }
-        carrierPadawan = null;
+        carrierPuff = null;
         return false;
     }
 
