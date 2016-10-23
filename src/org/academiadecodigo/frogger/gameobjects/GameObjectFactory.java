@@ -16,7 +16,7 @@ public class GameObjectFactory {
     private Collidable[] collidables;
     private Padawan[] padawans;
 
-    public void fieldMapper(Field field) {
+    public String[][] fieldMapper(Field field) {
 
         String[][] objectMap = {
 
@@ -36,15 +36,20 @@ public class GameObjectFactory {
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "},
                 {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "PA", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "}};
 
-        fieldPopulator(objectMap, field);
+        //fieldPopulator(objectMap, field);
+        return objectMap;
 
     }
 
     private void fieldPopulator(String[][] objectMap, Field field) {
 
-        moveables = new Moveable[13+14/*+10*/];
-        collidables = new Collidable[13+80];
-        padawans = new Padawan[14];
+        String[] arrayMoveables = {"RR", "RL", "PR", "PL"};
+        String[] arrayCollidables = {"G ", "RR", "RL", "PR", "PL"};
+        String[] arrayPoofs = {"PR", "PL"};
+
+        moveables = new Moveable[getNumberObjects(objectMap,field,arrayMoveables)];
+        collidables = new Collidable[getNumberObjects(objectMap,field,arrayCollidables)];
+        padawans = new Padawan[getNumberObjects(objectMap,field,arrayPoofs)];
 
         for (int row = 0; row < field.getRows(); row++) {
             for (int col = 0; col < field.getCols(); col++) {
@@ -81,6 +86,25 @@ public class GameObjectFactory {
                 }
             }
         }
+    }
+
+    public int getNumberObjects(String[][] objectMap, Field field, String[] arrayStrings){
+        int moveablesCounter = objectCounter(objectMap, field, arrayStrings);
+        return moveablesCounter;
+    }
+
+    private int objectCounter(String[][] objectMap, Field field, String[] str) {
+        int counter = 0;
+        for (int row = 0; row < field.getRows(); row++) {
+            for (int col = 0; col < field.getCols(); col++) {
+                for (int i = 0; i < str.length; i++) {
+                    if(objectMap[row][col].equals(str[i])){
+                        counter++;
+                    }
+                }
+            }
+        }
+        return counter;
     }
 
     private void addMoveable(Moveable moveable) {
