@@ -37,19 +37,20 @@ public class GameObjectFactory {
 
     }
 
-    private void fieldPopulator(String[][] objectMap, Field field) {
+    private void createArraysObjects(String[][] objectMap, Field field){
 
         String[] arrayMoveables = {"RR", "RL", "PR", "PL"};
         String[] arrayCollidables = {"G ", "RR", "RL", "PR", "PL"};
         String[] arrayPoofs = {"PR", "PL"};
 
-        moveables = new Moveable[getNumberObjects(objectMap,field,arrayMoveables)];
-        collidables = new Collidable[getNumberObjects(objectMap,field,arrayCollidables)];
-        puffs = new Puff[getNumberObjects(objectMap,field,arrayPoofs)];
+        moveables = new Moveable[objectCounter(objectMap,field,arrayMoveables)];
+        collidables = new Collidable[objectCounter(objectMap,field,arrayCollidables)];
+        puffs = new Puff[objectCounter(objectMap,field,arrayPoofs)];
+    }
 
-        System.out.println("moveables "+getNumberObjects(objectMap,field,arrayMoveables));
-        System.out.println("collidables "+getNumberObjects(objectMap,field,arrayCollidables));
-        System.out.println("poofs "+getNumberObjects(objectMap,field,arrayPoofs));
+    private void fieldPopulator(String[][] objectMap, Field field) {
+
+        createArraysObjects(objectMap,field);
 
         for (int row = 0; row < field.getRows(); row++) {
             for (int col = 0; col < field.getCols(); col++) {
@@ -89,11 +90,6 @@ public class GameObjectFactory {
                 }
             }
         }
-    }
-
-    public int getNumberObjects(String[][] objectMap, Field field, String[] arrayStrings){
-        int moveablesCounter = objectCounter(objectMap, field, arrayStrings);
-        return moveablesCounter;
     }
 
     private int objectCounter(String[][] objectMap, Field field, String[] str) {
@@ -136,7 +132,6 @@ public class GameObjectFactory {
             }
         }
     }
-
 
     public Moveable[] getMoveables() {
         return moveables;
