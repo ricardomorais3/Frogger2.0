@@ -20,6 +20,7 @@ public class FieldPosition {
         this.row = row;
         this.field = field;
         this.spriteType = spriteType;
+        //translate picture to newly originated position
         sprite = new Picture(field.columnToX(col), field.rowToY(row), spriteType.getPath());
         sprite.draw();
     }
@@ -43,6 +44,7 @@ public class FieldPosition {
     public void setPos(int col, int row){
         this.col = col;
         this.row = row;
+        //get new position, subtract to the oldest position, and translate picture
         sprite.delete();
         sprite = new Picture(field.columnToX(col), field.rowToY(row), spriteType.getPath());
         sprite.draw();

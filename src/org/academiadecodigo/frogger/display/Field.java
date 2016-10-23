@@ -18,6 +18,8 @@ public class Field {
     private Rectangle fieldLimit1;
     private Rectangle fieldLimit2;
 
+    //picture array (one per object)
+
     public Field(int cols, int rows){
         this.cols = cols;
         this.rows = rows;
@@ -26,11 +28,15 @@ public class Field {
         field = new Picture(PADDING + CELL_SIZE, PADDING, "/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif");
         field.draw();
 
+        //preload function
+
     }
 
     public FieldPosition makeFieldPosition(int col, int row, SpriteTypes spriteType){
         return new FieldPosition(col, row, this, spriteType);
     }
+
+    //preload all pictures in X = PADDING Y = PADDING
 
     public int getCols() {
         return cols;
