@@ -15,18 +15,18 @@ public class FieldPosition {
     private SpriteTypes spriteType;
     private Picture sprite;
 
+    private boolean outofLimits;
+
     public FieldPosition(int col, int row, Field field , SpriteTypes spriteType ){
         this.col = col;
         this.row = row;
         this.field = field;
         this.spriteType = spriteType;
-        if(col == 0 || col == field.getCols() - 1){
-            sprite = new Picture(field.columnToX(col), field.rowToY(row), spriteType.getPath());
-        }
-        else {
+        if(!(spriteType == SpriteTypes.GRASS)){
             sprite = new Picture(field.columnToX(col), field.rowToY(row), spriteType.getPath());
             sprite.draw();
         }
+
     }
 
     public int getFieldCols(){
@@ -46,16 +46,31 @@ public class FieldPosition {
     }
 
     public void setPos(int col, int row){
+        int oldCol = this.col;
+        int oldRow = this.row;
         this.col = col;
         this.row = row;
-        if(col == 0 || col == field.getCols() -1){
-            sprite.delete();
+
+        int differentialCol = this.col - oldCol;
+        int differentialRow = this.row - oldRow;
+        sprite.translate(differentialCol * field.CELL_SIZE, differentialRow * field.CELL_SIZE);
+
+        if(!(spriteType == SpriteTypes.GRASS)){
+            if(col == 0 || col == field.getCols() - 1 ){
+                sprite.delete();
+                outofLimits = true;
+            }
+            else if(outofLimits){
+                sprite = new Picture(field.columnToX(col), field.rowToY(row), spriteType.getPath());
+                sprite.draw();
+                outofLimits = false;
+            }
         }
-        else{
-            sprite.delete();
-            sprite = new Picture(field.columnToX(col), field.rowToY(row), spriteType.getPath());
-            sprite.draw();
-        }
+    }
+
+    public void playerRedraw(){
+        sprite.delete();
+        sprite.draw();
     }
 
     public void moveInDirection(Direction direction, int dist){
