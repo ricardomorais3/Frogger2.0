@@ -22,7 +22,6 @@ public class Field {
         this.cols = cols;
         this.rows = rows;
 
-
         //BLACK BACKGROUND DRAW
         background = new Rectangle(PADDING, PADDING, cols * CELL_SIZE, rows * CELL_SIZE);
         background.setColor(Color.BLACK);
