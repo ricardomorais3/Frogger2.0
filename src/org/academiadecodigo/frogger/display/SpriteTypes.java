@@ -8,7 +8,7 @@ import org.academiadecodigo.frogger.game.Game;
 
 //set paths to images
 public enum SpriteTypes {
-    
+
     FIELD ("/Users/codecadet/JavaProject/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\field.gif"),
     PLAYER("/Users/codecadet/JavaProject/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rafa.gif","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rafa.gif"),
     RAT("/Users/codecadet/JavaProject/Frogger2.0/src/org/academiadecodigo/frogger/display/res/rato.gif","C:\\Users\\gmkba\\Documents\\Frogger2.0\\src\\org\\academiadecodigo\\frogger\\display\\res\\rato.gif"),
