@@ -22,6 +22,7 @@ public class Field {
         this.cols = cols;
         this.rows = rows;
 
+
         //BLACK BACKGROUND DRAW
         background = new Rectangle(PADDING, PADDING, cols * CELL_SIZE, rows * CELL_SIZE);
         background.setColor(Color.BLACK);
@@ -37,7 +38,6 @@ public class Field {
     public FieldPosition makeFieldPosition(int col, int row, SpriteTypes spriteType){
         return new FieldPosition(col, row, this, spriteType);
     }
-
 
     public int getCols() {
         return cols;
