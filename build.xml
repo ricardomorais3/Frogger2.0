@@ -1,11 +1,11 @@
 <?xml version="1.0" ?>
-<project name="CarCrashX" default="jarfile">
+<project name="AC Frogger" default="jarfile">
 
     <!-- Initialize build properties  -->
     <target name="init" description="Initializes properties">
-        <property name="project.name" value="CarCrashX" />
+        <property name="project.name" value="AC Frogger" />
         <property name="src.dir" value="src" />
-        <property name="main.class" value="org.academiadecodigo.bootcamp.CarCrashX" />
+        <property name="main.class" value="org.academiadecodigo.frogger.game.Main" />
         <property name="build.dir" value="build" />
         <property name="classes.dir" value="${build.dir}/classes" />
         <property name="lib.dir" value="lib" />
