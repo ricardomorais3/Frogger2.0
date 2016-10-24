@@ -52,9 +52,10 @@ public class Game {
         while (!player.isDead()) {
 
             if (player.getPos().getRow() == 1) {
-                field.setField(new Picture( Field.PADDING + Field.CELL_SIZE,Field.PADDING ,"/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/Winner.gif"));
+                field.setField(new Picture(Field.PADDING + Field.CELL_SIZE, Field.PADDING, "/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/Winner.gif"));
                 field.redraw();
                 clip.stop();
+                winSound();
                 return;
             }
 
@@ -63,7 +64,7 @@ public class Game {
             moveAll();
         }
 
-        field.setField(new Picture(Field.PADDING + Field.CELL_SIZE, Field.PADDING, "/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/gameover.gif"));
+        field.setField(new Picture(Field.PADDING + Field.CELL_SIZE, Field.PADDING, "/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/gameover.gif"));
         field.redraw();
         clip.stop();
         diedSound();
@@ -130,7 +131,7 @@ public class Game {
     private void startMusic() {
         AudioInputStream audioInputStream = null;
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/JavaProjects/Frogger2.0/resources/musics/Axel_F_2F_Crazy_Frog_8_Bit.wav"));
+            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/Project/Frogger2.0/resources/musics/Axel_F_2F_Crazy_Frog_8_Bit.wav"));
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -151,7 +152,7 @@ public class Game {
     private void hopSound() {
         AudioInputStream audioInputStream = null;
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/JavaProjects/Frogger2.0/resources/musics/qubodup-cfork-ccby3-jump.wav"));
+            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/Project/Frogger2.0/resources/musics/qubodup-cfork-ccby3-jump.wav"));
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -171,7 +172,7 @@ public class Game {
     private void diedSound() {
         AudioInputStream audioInputStream = null;
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/JavaProjects/Frogger2.0/resources/musics/Rafa.wav"));
+            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/Project/Frogger2.0/resources/musics/Rafa.wav"));
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -187,4 +188,25 @@ public class Game {
             e.printStackTrace();
         }
     }
+
+    private void winSound() {
+        AudioInputStream audioInputStream = null;
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/Project/Frogger2.0/resources/musics/Voz_161024.wav"));
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Clip clipDuh = AudioSystem.getClip();
+            clipDuh.open(audioInputStream);
+            clipDuh.start();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

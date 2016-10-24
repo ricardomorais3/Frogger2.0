@@ -24,7 +24,7 @@ public class Field {
         this.rows = rows;
 
         //VISUAL PART
-        field = new Picture(PADDING + CELL_SIZE, PADDING, "/Users/codecadet/JavaProjects/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif");
+        field = new Picture(PADDING + CELL_SIZE, PADDING, "/Users/codecadet/Project/Frogger2.0/src/org/academiadecodigo/frogger/display/res/field.gif");
         //LIMITS DRAW
         fieldLimit1 = new Rectangle(PADDING, PADDING, CELL_SIZE, rows * CELL_SIZE);
         fieldLimit1.setColor(Color.BLACK);
