@@ -129,7 +129,7 @@ public class Game {
     private void startMusic() {
         AudioInputStream audioInputStream = null;
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/Project/Frogger2.0/resources/musics/Axel_F_2F_Crazy_Frog_8_Bit.wav"));
+            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/JavaProject/Frogger2.0/resources/musics/Axel_F_2F_Crazy_Frog_8_Bit.wav"));
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -149,7 +149,7 @@ public class Game {
     private void hopSound(){
         AudioInputStream audioInputStream = null;
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/Project/Frogger2.0/resources/musics/qubodup-cfork-ccby3-jump.wav"));
+            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/JavaProject/Frogger2.0/resources/musics/qubodup-cfork-ccby3-jump.wav"));
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -169,7 +169,7 @@ public class Game {
     private void diedSound(){
         AudioInputStream audioInputStream = null;
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/Project/Frogger2.0/resources/musics/Homer_Simpson_-_D_39_oh_.wav"));
+            audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/codecadet/JavaProject/Frogger2.0/resources/musics/Homer_Simpson_-_D_39_oh_.wav"));
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {
