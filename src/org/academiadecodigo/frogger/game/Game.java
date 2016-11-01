@@ -13,8 +13,6 @@ import java.io.IOException;
  */
 public class Game {
 
-    public static int os;
-
     private Field field;
     private Player player;
     private int delay;
@@ -29,10 +27,7 @@ public class Game {
         this.delay = delay;
     }
 
-    public void init(int os) {
-
-        this.os = os;
-
+    public void init() {
 
         player = new Player(field);
         GameObjectFactory gameObjectFactory = new GameObjectFactory();
