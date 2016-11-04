@@ -53,6 +53,7 @@ public class Game {
                 field.redraw();
                 soundInstance.stopClip();
                 soundInstance.winSound();
+                Thread.sleep(7000);
                 return;
             }
 
@@ -66,6 +67,8 @@ public class Game {
         field.redraw();
         soundInstance.stopClip();
         soundInstance.diedSound();
+        Thread.sleep(6000);
+
     }
 
     private void moveAll() {
@@ -126,87 +129,4 @@ public class Game {
         return false;
     }
 
-//    private void startMusic() {
-//        AudioInputStream audioInputStream = null;
-//        try {
-//            audioInputStream = AudioSystem.getAudioInputStream(new File("resources/musics/Axel_F_2F_Crazy_Frog_8_Bit.wav"));
-//        } catch (UnsupportedAudioFileException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            clip = AudioSystem.getClip();
-//            clip.open(audioInputStream);
-//            clip.start();
-//            clip.loop(clip.LOOP_CONTINUOUSLY);
-//        } catch (LineUnavailableException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private void hopSound() {
-//        AudioInputStream audioInputStream = null;
-//        try {
-//            audioInputStream = AudioSystem.getAudioInputStream(new File("resources/musics/qubodup-cfork-ccby3-jump.wav"));
-//        } catch (UnsupportedAudioFileException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            clipHop = AudioSystem.getClip();
-//            clipHop.open(audioInputStream);
-//            clipHop.start();
-//        } catch (LineUnavailableException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private void diedSound() {
-//        AudioInputStream audioInputStream = null;
-//        try {
-//            audioInputStream = AudioSystem.getAudioInputStream(new File("resources/musics/Rafa.wav"));
-//        } catch (UnsupportedAudioFileException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            Clip clipDuh = AudioSystem.getClip();
-//            clipDuh.open(audioInputStream);
-//            clipDuh.start();
-//        } catch (LineUnavailableException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private void winSound() {
-//        AudioInputStream audioInputStream = null;
-//        try {
-//
-//            audioInputStream = AudioSystem.getAudioInputStream(new File("resources/musics/Voz_161024.wav"));
-//
-//        } catch (UnsupportedAudioFileException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            Clip clipDuh = AudioSystem.getClip();
-//            clipDuh.open(audioInputStream);
-//            clipDuh.start();
-//        } catch (LineUnavailableException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
 }

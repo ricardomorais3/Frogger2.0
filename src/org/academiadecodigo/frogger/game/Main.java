@@ -14,6 +14,11 @@ public class Main {
         g1.init();
         g1.start();
 
+        g1 = new Game(200);
+        g1.init();
+        g1.start();
+
+
     }
 
 }
