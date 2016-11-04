@@ -31,7 +31,6 @@ public class Field {
         field = new Picture(PADDING + CELL_SIZE, PADDING, SpriteTypes.FIELD.getPath());
         field.draw();
 
-
     }
 
     public FieldPosition makeFieldPosition(int col, int row, SpriteTypes spriteType){
@@ -62,6 +61,11 @@ public class Field {
 
     public void redraw(){
         field.draw();
+    }
+
+    public void clearField(){
+        field.delete();
+        background.delete();
     }
 
 }

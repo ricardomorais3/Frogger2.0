@@ -45,7 +45,6 @@ public class Game {
 
         soundInstance.startMusic();
 
-
         while (!player.isDead()) {
 
             if (player.getPos().getRow() == 1) {
@@ -62,12 +61,10 @@ public class Game {
             moveAll();
             player.getPos().playerRedraw();
         }
-
         field.setField(new Picture(Field.PADDING + Field.CELL_SIZE, Field.PADDING, "org/academiadecodigo/frogger/display/res/gameover.gif"));
         field.redraw();
         soundInstance.stopClip();
         soundInstance.diedSound();
-        Thread.sleep(6000);
 
     }
 

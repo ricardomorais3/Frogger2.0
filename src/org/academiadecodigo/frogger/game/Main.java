@@ -8,17 +8,11 @@ import org.academiadecodigo.frogger.gameobjects.GameObjectFactory;
  */
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
-        Game g1 = new Game(200);
-        g1.init();
-        g1.start();
-
-        g1 = new Game(200);
-        g1.init();
-        g1.start();
-
+        GameManager gameManager = new GameManager();
+        gameManager.keyboardInit();
+        gameManager.newGame();
 
     }
-
 }
